@@ -1,14 +1,21 @@
 container:
   image: l.gcr.io/google/bazel:latest
 
-test_193_task:
+test_all_task:
+  env:
+    matrix:
+      - IJ_PRODUCT=intellij-2019.2
+      - IJ_PRODUCT=intellij-2019.3
+
+  bazel_cache:
+     folder: /.repo_cache_$IJ_PRODUCT
   test_script: 
     bazel build 
       --spawn_strategy=sandboxed
       --strategy=Javac=sandboxed
       --genrule_strategy=sandboxed
-      --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST
-      --define=ij_product=intellij-2019.3
-      //:ijwb_tests
-      
+      --repository_cache=/.repo_cache_$IJ_PRODUCT
+      --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST/$IJ_PRODUCT
+      --define=ij_product=$IJ_PRODUCT
+      //:ijwb_tests    
 
