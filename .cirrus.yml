@@ -4,8 +4,8 @@ container:
 test_all_task:
   env:
     matrix:
-      - IJ_PRODUCT=intellij-2019.2
-      - IJ_PRODUCT=intellij-2019.3
+      - IJ_PRODUCT: intellij-2019.2
+      - IJ_PRODUCT: intellij-2019.3
 
   bazel_cache:
      folder: /.repo_cache_$IJ_PRODUCT
