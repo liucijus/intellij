@@ -1,6 +1,7 @@
 container:
   image: l.gcr.io/google/bazel:latest
-task:
+
+test_193_task:
   test_script: 
     bazel build 
       --spawn_strategy=sandboxed
