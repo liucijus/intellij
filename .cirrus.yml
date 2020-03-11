@@ -8,7 +8,7 @@ test_all_task:
       - IJ_PRODUCT: intellij-2019.3
 
   test_script: 
-    bazel build 
+    bazel test 
       --spawn_strategy=sandboxed
       --strategy=Javac=sandboxed
       --genrule_strategy=sandboxed
