@@ -15,4 +15,8 @@ test_all_task:
       --remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST/$IJ_PRODUCT
       --define=ij_product=$IJ_PRODUCT
       //:ijwb_tests    
+  always:
+    junit_artifacts:
+      path: "bazel-testlogs/**/test.xml"
+      format: junit
 
